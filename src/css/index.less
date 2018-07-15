@@ -1,0 +1,226 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    font-size: 14px;
+}
+body {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    .wrapper {
+        width: 100vw;
+        height: 100vh;
+        padding-top: 60px;
+        box-sizing: border-box;
+        background-color: rgba(0,0,0,0.2);
+        // 1. 图片区域：正方形
+        .song-img {
+            position: relative;
+            width: 50%;
+            height: 0px;
+            padding-top: 50%;
+            margin: 0 auto;
+            .img-wrapper {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                bottom: 0px;
+                left: 0px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        // 2. 歌曲信息
+        .song-info {
+            width: 100%;
+            height: 126px;
+            text-align: center;
+            margin-top: 40px;
+            .song-name {
+                font-size: 28px;
+                color: rgba(255,255,255,.86);
+                margin-bottom: 8px;
+            }
+            .singer-name,
+            .album-name {
+                color: rgba(255,255,255,.7);
+                font-size: 16px;
+                padding-top: 10px;
+            }
+            .album-name {
+                font-size: 14px;
+            }
+        }
+        // 3. 进度条
+        .pro {
+            display: flex;
+            width: 100%;
+            height: 41px;
+            margin-top: 10px;
+            .cur-time,
+            .all-time {
+                width: 60px;
+                height: 41px;
+                text-align: center;
+                line-height: 41px;
+                color: #fff;
+                font-size: 14px;
+            }
+            .pro-wrapper {
+                flex: 1;
+                position: relative;
+                overflow: hidden;
+                padding: 0 3px;
+                .pro-bottom,
+                .pro-top {
+                    position: absolute;
+                    top: 20px;
+                    left: 0px;
+                    width: 100%;
+                    height: 1px;
+                }
+                .pro-bottom {
+                    background-color: rgba(0,0,0,0.2);
+                }
+                .pro-top {
+                    background-color: #fff;
+                    position: relative;
+                    transform: translateX(-100%);
+                    .slider-point {
+                        position: absolute;
+                        top: -10px;
+                        right: -10px;
+                        width: 21px;
+                        height: 21px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        &::after {
+                            content: '';
+                            display: block;
+                            width: 5px;
+                            height: 5px;
+                            background-color: #fff;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+            }
+        }
+        // 4. 控制面板
+        .control {
+            position: absolute;
+            display: flex;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            height: 60px;
+            background-color: rgba(0,0,0,0.2);
+            .btn-wrapper {
+                width: 50px;
+                height: 60px;
+                flex: 1;
+                background-size: 20px 20px;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            .like-btn {
+                background-image: url('../images/icon-like.png');
+                &.liking {
+                    background-image: url('../images/icon-like-solid.png');                    
+                }
+            }
+            .prev-btn {
+                background-image: url('../images/icon-prev.png');
+            }
+            .play-btn {
+                background-image: url('../images/icon-pause.png');
+                &.playing {
+                    background-image: url('../images/icon-play.png');
+                }
+            }
+            .next-btn {
+                background-image: url('../images/icon-next.png');
+            }
+            .list-btn {
+                background-image: url('../images/icon-list.png');
+            }
+        }
+    }
+    // 播放列表
+    .playlist {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        background-color: #f0f0f0;
+        transform: translateY(100%);
+        transition: transform 0.3s ease-in;
+        &.show {
+            transform: translateY(0);
+        }
+        .play-header,
+        .close-btn {
+            width: 100%;
+            height: 44px;
+            text-align: center;
+            line-height: 44px;
+            font-size: 16px;
+        }
+        .close-btn {
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        .list-wrapper {
+            li {
+                padding-left: 20px;
+                height: 34px;
+                line-height: 34px;
+                border-top: 1px solid rgba(0,0,0,0.1);
+                &.sign {
+                    h3 {
+                        color: red;
+                    }
+                }
+                h3 {
+                    font-size: 16px;
+                    span {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    // 歌词部分
+    .lyrics {
+        position: fixed;
+        bottom: 78px;
+        left: 0px;
+        width: 100%;
+        height: 120px;
+        text-align: center;
+        color: #929292;
+        font-weight: 600;
+        overflow: hidden;
+        ul {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            transition: all 0.4s ease-in-out;
+            li {
+                font-size: 16px;
+                height: 40px;
+                line-height: 40px;
+                &.active {
+                    color: rgba(255, 255, 255, 0.86);
+                    font-size: 17px;
+                }
+            }
+        }
+    }
+}
